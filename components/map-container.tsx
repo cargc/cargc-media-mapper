@@ -69,8 +69,6 @@ export default function MapContainer({ mediaPoints }: MapContainerProps) {
         : [],
       bodiesOfWater:
         searchParams.get("body_of_water")?.split(",").filter(Boolean) || [],
-      startYear: searchParams.get("start_year") || "",
-      endYear: searchParams.get("end_year") || "",
     }),
     [searchParams]
   );
@@ -93,18 +91,6 @@ export default function MapContainer({ mediaPoints }: MapContainerProps) {
         !filters.bodiesOfWater.includes(
           media.natural_feature_name?.toLowerCase() || ""
         )
-      )
-        return false;
-      if (
-        filters.startYear &&
-        media.media?.release_year &&
-        media.media?.release_year < +filters.startYear
-      )
-        return false;
-      if (
-        filters.endYear &&
-        media.media?.release_year &&
-        media.media?.release_year > +filters.endYear
       )
         return false;
 
