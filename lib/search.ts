@@ -13,8 +13,6 @@ export function matchesSearch(media: MediaLocation, query: string): boolean {
     media.natural_feature_name,
     media.media?.name,
     media.media?.media_type,
-    media.media?.director,
-    media.media?.release_year?.toString(),
     media.media?.subjects?.join(" "),
     media.media?.language?.join(" "),
   ]
