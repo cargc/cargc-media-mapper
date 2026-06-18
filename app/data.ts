@@ -18,8 +18,6 @@ async function getMedia(): Promise<Map<string, Media>> {
     mediaMap.set(record.id, {
       name: fields.name,
       original_title: fields.original_title,
-      director: fields.director,
-      release_year: fields.release_year,
       description: fields.description,
       image: fields.image?.[0],
       video_link: fields.video_link,
