@@ -53,15 +53,8 @@ export function LocationDetails({
               role="heading"
               aria-level={2}
             >
-              {selectedMediaPoint?.media?.name} (
-              {selectedMediaPoint?.media?.release_year})
+              {selectedMediaPoint?.media?.name} 
             </CardTitle>
-            <p
-              id="location-description"
-              className="text-md text-muted-foreground"
-            >
-              Created by {selectedMediaPoint?.media?.director}
-            </p>
             {selectedMediaPoint?.media?.video_link && (
               <Button variant="outline" size="sm" asChild className="my-2">
                 <Link
@@ -82,9 +75,7 @@ export function LocationDetails({
                 src={selectedMediaPoint.media.image.url || ""}
                 alt={`Image from ${
                   selectedMediaPoint.media.name || "unknown media"
-                } (${
-                  selectedMediaPoint.media.release_year || "unknown year"
-                }) by ${selectedMediaPoint.media.director || "unknown director"}`}
+                } 
                 fill
                 className="object-cover rounded"
               />
