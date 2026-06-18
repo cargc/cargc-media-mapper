@@ -4,8 +4,6 @@ import { useMemo, useState } from "react";
 import { MapFilters, MediaLocation } from "@/lib/airtable/types";
 import { ENABLE_REGION_FILTER } from "@/lib/feature-flags";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
 import { SlidersHorizontal } from "lucide-react";
 import {
   Dialog,
@@ -29,8 +27,6 @@ function filtersResetKey(f: MapFilters): string {
     [...f.countries].sort().join(","),
     [...f.regions].sort().join(","),
     [...f.bodiesOfWater].sort().join(","),
-    f.startYear,
-    f.endYear,
   ].join("|");
 }
 
@@ -59,24 +55,7 @@ function FiltersForm({ filters, mediaPoints }: FilterProps) {
         .map((b) => ({ value: b?.toLowerCase(), label: b })),
     [mediaPoints]
   );
-  const minYear = useMemo(
-    () =>
-      Math.min(
-        ...mediaPoints
-          .map((d) => d.media?.release_year)
-          .filter((y) => y !== undefined)
-      ),
-    [mediaPoints]
-  );
-  const maxYear = useMemo(
-    () =>
-      Math.max(
-        ...mediaPoints
-          .map((d) => d.media?.release_year)
-          .filter((y) => y !== undefined)
-      ),
-    [mediaPoints]
-  );
+  
   const [selectedCountry, setSelectedCountry] = useState<string[]>(
     filters.countries
   );
@@ -87,8 +66,6 @@ function FiltersForm({ filters, mediaPoints }: FilterProps) {
     filters.bodiesOfWater
   );
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [startYear, setStartYear] = useState(filters.startYear || "");
-  const [endYear, setEndYear] = useState(filters.endYear || "");
 
   const handleApplyFilters = () => {
     const newParams = new URLSearchParams();
@@ -157,32 +134,6 @@ function FiltersForm({ filters, mediaPoints }: FilterProps) {
             selectedOptions={selectedWater}
           />
 
-          <div className="flex flex-col gap-1">
-            <Label>Date Range</Label>
-            <div className="flex gap-1 items-center">
-              <Input
-                value={startYear}
-                min={minYear}
-                max={maxYear}
-                onChange={(e) => setStartYear(e.target.value)}
-                aria-label="From year"
-                type="number"
-                placeholder="Start Year"
-                className="min-w-28 text-base"
-              />
-              -
-              <Input
-                value={endYear}
-                min={minYear}
-                max={maxYear}
-                onChange={(e) => setEndYear(e.target.value)}
-                type="number"
-                aria-label="Filter by latest release year"
-                placeholder="To year"
-                className="min-w-28 text-base"
-              />
-            </div>
-          </div>
         </div>
         <DialogFooter>
           <DialogClose asChild>
