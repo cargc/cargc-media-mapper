@@ -89,14 +89,14 @@ export const columns: ColumnDef<MediaLocation>[] = [
     id: "naturalFeature",
     accessorFn: (row) => row.natural_feature_name || "",
     header: ({ column }) => (
-      <SortableHeader column={column} title="Natural Feature" />
+      <SortableHeader column={column} title="Affiliated Fellow" />
     ),
     cell: ({ row }) => row.original.natural_feature_name || "-",
   },
   {
     id: "subjects",
     accessorFn: (row) => row.media?.subjects?.join(", ") || "",
-    header: ({ column }) => <SortableHeader column={column} title="Subjects" />,
+    header: ({ column }) => <SortableHeader column={column} title="Tags" />,
     cell: ({ row }) => {
       const subjects = row.original.media?.subjects;
       if (!subjects?.length) return "-";
