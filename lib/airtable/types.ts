@@ -22,8 +22,6 @@ export interface Media {
   name: string;
   original_title?: string;
   media_type?: string;
-  director?: string;
-  release_year?: number;
   description?: string;
   image?: MediaImage;
   video_link?: string;
@@ -53,8 +51,6 @@ export interface MapFilters {
   countries: string[];
   regions: string[];
   bodiesOfWater: string[];
-  startYear: string;
-  endYear: string;
 }
 
 export interface MultiSelectOption {
