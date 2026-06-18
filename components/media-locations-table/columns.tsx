@@ -54,18 +54,7 @@ export const columns: ColumnDef<MediaLocation>[] = [
       );
     },
   },
-  {
-    id: "director",
-    accessorFn: (row) => row.media?.director || "",
-    header: ({ column }) => <SortableHeader column={column} title="Director" />,
-    cell: ({ row }) => row.original.media?.director || "-",
-  },
-  {
-    id: "releaseYear",
-    accessorFn: (row) => row.media?.release_year || 0,
-    header: ({ column }) => <SortableHeader column={column} title="Year" />,
-    cell: ({ row }) => row.original.media?.release_year || "-",
-  },
+
   {
     id: "location",
     accessorFn: (row) => formatLocation(row),
