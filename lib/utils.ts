@@ -14,8 +14,6 @@ import { LngLatBoundsLike } from "mapbox-gl";
 const headers = [
   "Media Title",
   "Media Type",
-  "Director",
-  "Release Year",
   "Location",
   "Affiliated Fellow",
   "Tags",
@@ -33,8 +31,6 @@ export function exportToCSV(filteredRows: Row<MediaLocation>[]) {
     return [
       item.media?.name || "",
       item.media?.media_type || "",
-      item.media?.director || "",
-      item.media?.release_year || "",
       formatLocation(item),
       item.natural_feature_name || "",
       item.media?.subjects?.join("; ") || "",
@@ -106,8 +102,6 @@ export function hasActiveFilters(filters: MapFilters): boolean {
     filters.countries.length > 0 ||
     (ENABLE_REGION_FILTER && filters.regions.length > 0) ||
     filters.bodiesOfWater.length > 0 ||
-    filters.startYear !== "" ||
-    filters.endYear !== ""
   );
 }
 
