@@ -119,13 +119,13 @@ export function LocationDetails({
           />
 
           <Metric
-            label="Natural Feature"
+            label="Affiliated Fellow"
             value={selectedMediaPoint?.natural_feature_name}
             className="mt-3"
           />
 
           <Metric
-            label="Subjects"
+            label="Tags"
             value={selectedMediaPoint?.media?.subjects}
             className="mt-3"
           />
@@ -152,7 +152,7 @@ export function LocationDetails({
 
           <Metric
             href={selectedMediaPoint?.media?.rights_statement_link || ""}
-            label="Media Rights"
+            label="Corresponding Publications"
             value={selectedMediaPoint?.media?.rights || ""}
             className="mt-3"
           />
