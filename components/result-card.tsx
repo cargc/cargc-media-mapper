@@ -24,14 +24,10 @@ export function ResultCard({ media, isSelected }: ResultCardProps) {
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 space-y-2">
           <p className="font-medium text-sm truncate">
-            {media.name}{" "}
-            {media.media?.release_year && `(${media.media.release_year})`}
-          </p>
-          {(media.country || media.media?.director) && (
+            {media.name}</p>
+          {(media.country && (
             <p className="text-xs text-muted-foreground truncate">
-              {[media.country, media.media?.director]
-                .filter(Boolean)
-                .join(" · ")}
+              {[media.country}
             </p>
           )}
         </div>
