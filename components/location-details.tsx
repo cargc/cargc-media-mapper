@@ -71,11 +71,9 @@ export function LocationDetails({
 
           {selectedMediaPoint?.media?.image?.url && (
             <div className="relative w-full h-50">
-              <Image
+                <Image
                 src={selectedMediaPoint.media.image.url || ""}
-                alt={`Image from ${
-                  selectedMediaPoint.media.name || "unknown media"
-                } 
+                alt={`Image from ${selectedMediaPoint.media.name || "unknown media"}`}
                 fill
                 className="object-cover rounded"
               />
