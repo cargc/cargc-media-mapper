@@ -79,12 +79,6 @@ function FiltersForm({ filters, mediaPoints }: FilterProps) {
     if (ENABLE_REGION_FILTER && selectedRegion.length) {
       newParams.append("region", selectedRegion.join(","));
     }
-    if (startYear) {
-      newParams.append("start_year", "" + startYear);
-    }
-    if (endYear) {
-      newParams.append("end_year", "" + endYear);
-    }
 
     setFiltersOpen(false);
     history.pushState({}, "", `/?${newParams.toString()}`);
