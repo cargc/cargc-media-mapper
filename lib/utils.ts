@@ -86,8 +86,6 @@ export function addQueryParameter(
 export const FILTER_PARAMS = [
   "country",
   "body_of_water",
-  "start_year",
-  "end_year",
 ] as const;
 
 /** Keys cleared by “Clear filters” (includes `region` when the feature is on). */
@@ -101,7 +99,7 @@ export function hasActiveFilters(filters: MapFilters): boolean {
   return (
     filters.countries.length > 0 ||
     (ENABLE_REGION_FILTER && filters.regions.length > 0) ||
-    filters.bodiesOfWater.length > 0 ||
+    filters.bodiesOfWater.length > 0
   );
 }
 
