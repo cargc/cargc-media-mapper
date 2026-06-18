@@ -115,8 +115,8 @@ export function MediaTable({ data }: MediaTableProps) {
       <div className="rounded-md border">
         <Table aria-label="Media locations table" role="table">
           <caption className="sr-only">
-            Table showing media locations with details including title, type,
-            director, year, location, and subjects. Click column headers to
+            Table showing media locations with details including title, media type,
+           location, and tags. Click column headers to
             sort. Click location links to view details on the map.
           </caption>
           <TableHeader>
