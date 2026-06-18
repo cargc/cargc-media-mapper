@@ -17,14 +17,14 @@ const headers = [
   "Director",
   "Release Year",
   "Location",
-  "Natural Feature",
-  "Subjects",
+  "Affiliated Fellow",
+  "Tags",
   "Language",
   "Coordinates",
   "Description",
   "Original Title",
   "References",
-  "Rights",
+  "Corresponding Publications",
 ];
 
 export function exportToCSV(filteredRows: Row<MediaLocation>[]) {
