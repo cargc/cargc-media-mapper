@@ -25,9 +25,9 @@ export function ResultCard({ media, isSelected }: ResultCardProps) {
         <div className="min-w-0 space-y-2">
           <p className="font-medium text-sm truncate">
             {media.name}</p>
-          {(media.country && (
+          {media.country && (
             <p className="text-xs text-muted-foreground truncate">
-              {[media.country}
+              {media.country}
             </p>
           )}
         </div>
