@@ -71,7 +71,6 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
 
   // When the basemap style URL changes, swap the style and re-add the data
   // layer + selection styling once the new style finishes loading.
-  const hasSetCatalogBoundsRef = useRef(false);
   const prevStyleRef = useRef(styleUrl);
   useEffect(() => {
     if (!map.current || !isMapLoaded || styleUrl === prevStyleRef.current)
@@ -85,19 +84,6 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [styleUrl, isMapLoaded]);
-
-  useEffect(() => {
-    if (!map.current || !isMapLoaded || !bounds) return;
-
-    if (!hasSetCatalogBoundsRef.current) {
-      map.current.fitBounds(bounds, {
-        duration: 1500,
-        padding: 80,
-        maxZoom: MAP_CATALOG_ZOOM,
-      });
-      hasSetCatalogBoundsRef.current = true;
-    }
-  }, [isMapLoaded, bounds]);
 
   // Sync the GeoJSON data layer with selection included in a single
   // setData() call to avoid intermediate frames with missing styling.
