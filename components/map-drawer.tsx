@@ -25,11 +25,10 @@ interface MapDrawerProps {
   onSearchChange: (value: string) => void;
   isOpen: boolean;
   onToggle: () => void;
-  drawerWidthPx,
-  onDrawerWidthChange,
-  onDrawerWidthCommit,
+  drawerWidthPx: number;
+  onDrawerWidthChange: (width: number) => void;
+  onDrawerWidthCommit: (width: number) => void;
 }
-
 export function MapDrawer({
   searchedMediaPoints,
   allMediaPoints,
@@ -37,6 +36,9 @@ export function MapDrawer({
   onSearchChange,
   isOpen,
   onToggle,
+  drawerWidthPx,
+  onDrawerWidthChange,
+  onDrawerWidthCommit,
 }: MapDrawerProps) {
   const searchParams = useSearchParams();
   const mediaPointId = searchParams.get("mediaPointId");
