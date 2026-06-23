@@ -27,6 +27,7 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const skipNextFlyToRef = useRef(true);
   const searchParams = useSearchParams();
   const mediaPointId = searchParams.get("mediaPointId");
 
@@ -93,10 +94,15 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
     addDataLayer(map.current, data, selectedMediaPoint);
 
     if (selectedMediaPoint) {
-      map.current.flyTo({
-        center: [selectedMediaPoint.longitude, selectedMediaPoint.latitude],
-      });
+      if (skipNextFlyToRef.current) {
+        skipNextFlyToRef.current = false;
+      } else {
+        map.current.flyTo({
+          center: [selectedMediaPoint.longitude, selectedMediaPoint.latitude],
+        });
+      }
     }
+    
   }, [isMapLoaded, data, selectedMediaPoint]);
 
   // Auto-select a random point on first load so the UI isn't empty.
