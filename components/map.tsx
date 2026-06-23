@@ -9,11 +9,11 @@ import { addQueryParameter, hasActiveFilters } from "@/lib/utils";
 import {
   addDataLayer,
   setupKeyboardNav,
-  DEFAULT_BOUNDS,
-  DEFAULT_ZOOM,
 } from "@/lib/map-utils";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
+/** Globe size on initial load. Higher = globe looks larger. */
+const MAP_CATALOG_ZOOM = 2.5;
 
 interface MapProps {
   data: MediaLocation[];
@@ -43,14 +43,10 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: styleUrl,
-      bounds: bounds || DEFAULT_BOUNDS,
-      fitBoundsOptions: {
-        padding: 100,
-      },
-      zoom: DEFAULT_ZOOM,
+      center: [0, 20],
+      zoom: MAP_CATALOG_ZOOM,
       preserveDrawingBuffer: true,
     });
-
     map.current.addControl(new mapboxgl.NavigationControl(), "top-right");
 
     map.current.on("load", () => {
@@ -75,6 +71,7 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
 
   // When the basemap style URL changes, swap the style and re-add the data
   // layer + selection styling once the new style finishes loading.
+  const hasSetCatalogBoundsRef = useRef(false);
   const prevStyleRef = useRef(styleUrl);
   useEffect(() => {
     if (!map.current || !isMapLoaded || styleUrl === prevStyleRef.current)
@@ -88,6 +85,17 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [styleUrl, isMapLoaded]);
+
+    useEffect(() => {
+    if (!map.current || !isMapLoaded || !bounds) return;
+
+    if (!hasSetCatalogBoundsRef.current) {
+      map.current.fitBounds(bounds, { duration: 0 });
+      map.current.setZoom(MAP_CATALOG_ZOOM);
+      hasSetCatalogBoundsRef.current = true;
+    }
+  }, [isMapLoaded, bounds]);
+
 
   // Sync the GeoJSON data layer with selection included in a single
   // setData() call to avoid intermediate frames with missing styling.
