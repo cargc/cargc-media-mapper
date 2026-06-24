@@ -26,7 +26,6 @@ export interface Media {
   image?: MediaImage;
   video_link?: string;
   subjects?: string[];
-  language?: string[];
   references?: string;
   rights?: string;
   rights_statement_link?: string;
