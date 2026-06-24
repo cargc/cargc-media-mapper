@@ -137,8 +137,7 @@ export default function MapContainer({ mediaPoints }: MapContainerProps) {
       if (
         filters.bodiesOfWater.length > 0 &&
         !filters.bodiesOfWater.includes(
-          media.natural_feature_name?.toLowerCase() || ""
-        )
+          media.media?.affiliated_fellow?.toLowerCase() || ""        )
       )
         return false;
       return true;
