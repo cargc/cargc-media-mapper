@@ -26,6 +26,8 @@ export interface Media {
   image?: MediaImage;
   video_link?: string;
   subjects?: string[];
+  affiliated_fellow?: string;
+  affiliated_fellow_link?: string;
   references?: string;
   rights?: string;
   rights_statement_link?: string;
@@ -39,8 +41,6 @@ export interface MediaLocation {
   latitude: number;
   location_name?: string;
   location_description?: string;
-  natural_feature_name?: string;
-  affiliated_fellow_link?: string;
   city?: string;
   region?: string;
   country?: string;
