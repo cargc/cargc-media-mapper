@@ -14,7 +14,6 @@ export function matchesSearch(media: MediaLocation, query: string): boolean {
     media.media?.name,
     media.media?.media_type,
     media.media?.subjects?.join(" "),
-    media.media?.language?.join(" "),
   ]
     .filter(Boolean)
     .join(" ")
