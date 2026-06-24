@@ -103,11 +103,11 @@ export function LocationDetails({
             className="mt-3"
           />
 
-          {selectedMediaPoint?.natural_feature_name?.trim() ? (
+                 {selectedMediaPoint?.media?.affiliated_fellow?.trim() ? (
             <Metric
-              href={selectedMediaPoint.affiliated_fellow_link || ""}
+              href={selectedMediaPoint.media.affiliated_fellow_link || ""}
               label="Affiliated Fellow"
-              value={selectedMediaPoint.natural_feature_name}
+              value={selectedMediaPoint.media.affiliated_fellow}
               className="mt-3"
             />
           ) : null}
