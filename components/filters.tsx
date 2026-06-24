@@ -49,7 +49,7 @@ function FiltersForm({ filters, mediaPoints }: FilterProps) {
   );
   const bodiesOfWaterOptions = useMemo(
     () =>
-      [...new Set(mediaPoints.map((m) => m.natural_feature_name))]
+      [...new Set(mediaPoints.map((m) => m.media?.affiliated_fellow))]
         .filter((b) => b !== undefined)
         .sort()
         .map((b) => ({ value: b?.toLowerCase(), label: b })),
