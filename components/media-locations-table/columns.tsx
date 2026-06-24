@@ -76,11 +76,11 @@ export const columns: ColumnDef<MediaLocation>[] = [
   },
   {
     id: "naturalFeature",
-    accessorFn: (row) => row.natural_feature_name || "",
+    accessorFn: (row) => row.media?.affiliated_fellow || "",
     header: ({ column }) => (
       <SortableHeader column={column} title="Affiliated Fellow" />
     ),
-    cell: ({ row }) => row.original.natural_feature_name || "-",
+    cell: ({ row }) => row.original.media?.affiliated_fellow || "-",
   },
   {
     id: "subjects",
