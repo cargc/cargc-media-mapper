@@ -22,7 +22,6 @@ async function getMedia(): Promise<Map<string, Media>> {
       image: fields.image?.[0],
       video_link: fields.video_link,
       subjects: fields.tags,
-      language: fields.language,
       references: fields.references,
       rights: fields.corresponding_publications,
       rights_statement_link: fields.corresponding_publication_link,
