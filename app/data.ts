@@ -57,6 +57,7 @@ export async function getMediaPoints() {
         location_name: fields.location_name,
         location_description: fields.location_description,
         natural_feature_name: fields.affiliated_fellow,
+        affiliated_fellow_link: fields.affiliated_fellow_link,
         city: fields.city,
         region: fields.region,
         country: fields.country,
