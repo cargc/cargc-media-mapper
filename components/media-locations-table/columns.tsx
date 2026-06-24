@@ -101,23 +101,6 @@ export const columns: ColumnDef<MediaLocation>[] = [
       );
     },
   },
-  {
-    id: "language",
-    accessorFn: (row) => row.media?.language?.join(", ") || "",
-    header: ({ column }) => <SortableHeader column={column} title="Language" />,
-    cell: ({ row }) => {
-      const languages = row.original.media?.language;
-      if (!languages?.length) return "-";
-
-      return (
-        <div className="flex flex-wrap gap-1">
-          {languages.map((lang, index) => (
-            <Badge key={index} variant="secondary" className="text-xs">
-              {lang}
-            </Badge>
-          ))}
-        </div>
-      );
-    },
+ 
   },
 ];
