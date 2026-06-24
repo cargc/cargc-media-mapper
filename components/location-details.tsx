@@ -70,12 +70,13 @@ export function LocationDetails({
           </div>
 
           {selectedMediaPoint?.media?.image?.url && (
-            <div className="relative w-full h-50">
-                <Image
+            <div className="relative w-full h-[40vh] min-h-[200px] max-h-[480px] overflow-hidden rounded bg-muted">
+              <Image
                 src={selectedMediaPoint.media.image.url || ""}
                 alt={`Image from ${selectedMediaPoint.media.name || "unknown media"}`}
                 fill
-                className="object-cover rounded"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-contain object-center"
               />
             </div>
           )}
