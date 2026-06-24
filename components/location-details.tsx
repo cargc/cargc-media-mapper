@@ -81,10 +81,6 @@ export function LocationDetails({
           )}
         </CardHeader>
         <CardContent className="p-0 mt-3">
-          <Metric
-            label="Language"
-            value={selectedMediaPoint?.media?.language}
-          />
           {selectedMediaPoint?.location_description && (
             <Metric
               label="Location Description"
@@ -113,11 +109,13 @@ export function LocationDetails({
             className="mt-3"
           />
 
-          <Metric
-            label="Tags"
-            value={selectedMediaPoint?.media?.subjects}
-            className="mt-3"
-          />
+                {selectedMediaPoint?.media?.subjects?.length ? (
+            <Metric
+              label="Tags"
+              value={selectedMediaPoint.media.subjects}
+              className="mt-3"
+            />
+          ) : null}
 
           {relatedMedia.length > 0 && (
             <>
