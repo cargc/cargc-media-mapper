@@ -103,11 +103,14 @@ export function LocationDetails({
             className="mt-3"
           />
 
-          <Metric
-            label="Affiliated Fellow"
-            value={selectedMediaPoint?.natural_feature_name}
-            className="mt-3"
-          />
+          {selectedMediaPoint?.natural_feature_name?.trim() ? (
+            <Metric
+              href={selectedMediaPoint.affiliated_fellow_link || ""}
+              label="Affiliated Fellow"
+              value={selectedMediaPoint.natural_feature_name}
+              className="mt-3"
+            />
+          ) : null}
 
                 {selectedMediaPoint?.media?.subjects?.length ? (
             <Metric
@@ -137,12 +140,14 @@ export function LocationDetails({
             </>
           )}
 
-          <Metric
-            href={selectedMediaPoint?.media?.rights_statement_link || ""}
-            label="Corresponding Publications"
-            value={selectedMediaPoint?.media?.rights || ""}
-            className="mt-3"
-          />
+          {selectedMediaPoint?.media?.rights?.trim() ? (
+            <Metric
+              href={selectedMediaPoint.media.rights_statement_link || ""}
+              label="Corresponding Publications"
+              value={selectedMediaPoint.media.rights}
+              className="mt-3"
+            />
+          ) : null}
         </CardContent>
       </div>
     </Card>
