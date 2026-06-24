@@ -31,7 +31,7 @@ export function exportToCSV(filteredRows: Row<MediaLocation>[]) {
       item.media?.name || "",
       item.media?.media_type || "",
       formatLocation(item),
-      item.natural_feature_name || "",
+      item.media?.affiliated_fellow || "",
       item.media?.subjects?.join("; ") || "",
       `${item.latitude}, ${item.longitude}`,
       item.media?.description || "",
