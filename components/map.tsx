@@ -6,6 +6,7 @@ import mapboxgl, { LngLatBoundsLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { MapFilters, MediaLocation } from "@/lib/airtable/types";
 import { addQueryParameter, hasActiveFilters } from "@/lib/utils";
+import { RANDOM_ENTRY_ON_LOAD } from "@/lib/feature-flags";
 import {
   addDataLayer,
   setupKeyboardNav,
@@ -108,6 +109,10 @@ export function Map({ data, bounds, filters, styleUrl, onMapReady }: MapProps) {
   // Auto-select a random point on first load so the UI isn't empty.
   // Skipped if a point is already selected or filters are active.
   useEffect(() => {
+    if (RANDOM_ENTRY_ON_LOAD !== "on") {
+      return;
+    }
+
     if (
       selectedMediaPoint ||
       !isMapLoaded ||
