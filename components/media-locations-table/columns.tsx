@@ -101,6 +101,4 @@ export const columns: ColumnDef<MediaLocation>[] = [
       );
     },
   },
- 
-  },
 ];
