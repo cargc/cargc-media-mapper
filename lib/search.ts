@@ -10,7 +10,7 @@ export function matchesSearch(media: MediaLocation, query: string): boolean {
     media.country,
     media.region,
     media.location_name,
-    media.natural_feature_name,
+    media.media?.affiliated_fellow,
     media.media?.name,
     media.media?.media_type,
     media.media?.subjects?.join(" "),
